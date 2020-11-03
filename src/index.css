@@ -1,6 +1,25 @@
-*{
-    margin: 0;
-}
+html{
+    margin: 0px;
+};
+
 body{
-    background-color: lightgreen;   
-}
+    background: linear-gradient(180deg, #F5DB13 0%, #F2B807 100%);
+    background-repeat: no-repeat;   
+    width: 100%;
+    height: 100%;
+};
+
+.color{
+    margin-top: 128px;
+    margin-bottom: 191px;
+};
+
+.banner{
+    width: 793px;
+    height: 440px;
+    background: red;
+};
+
+.content{
+    display: flex;
+};

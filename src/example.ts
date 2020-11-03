@@ -5,7 +5,7 @@ function concat (stringFirst: string, stringSecond: string): string{
     return `${stringFirst}  ${stringSecond}`
 };
 
-console.log(concat('Hello','World'));
+concat('Hello','World')
 
 
 // 2
@@ -22,8 +22,7 @@ const MyHometask: FirtstInterface = {
 	simeArray: ["string one", "string two", 42],
 	withData: [{ howIDoIt: "I Do It Wel", simeArray: ["string one", 23] }],
 }
-
-console.log(MyHometask.simeArray);
+MyHometask.simeArray;
 
 // 3
 interface MyArray<T> {

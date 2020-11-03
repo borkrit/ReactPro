@@ -1,0 +1,23 @@
+.header{
+    // width: 1354px;
+    background: #F5DB13;
+box-shadow: 0px 4px 16px rgba(1, 28, 64, 0.2);
+
+}
+
+img{
+    padding-top: 10px;
+}
+.topMenu{
+    width: 650px;
+    padding-top: 15px;
+}
+.topMenu a {
+    text-decoration: none;
+    color: black;
+    margin-left: 10%;
+}
+.topMenu a:hover,
+.topMenu a:active{
+    border-bottom: 2px solid black;
+}
