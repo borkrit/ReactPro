@@ -10,7 +10,7 @@ const Footer = () => {
         <div className={style.footer} >
             <div className={s.container} >
                 <p>Make with love</p>
-                <p>Ours Team</p>
+                <p>Ours Team!</p>
             </div>
         </div>
 
