@@ -1,5 +1,5 @@
 const path = require('path');
-const HTMLWebpackPlugin = require('html-webpack-plugin')
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 const NODE_ENV = process.env.NODE_ENV;
 
 module.exports={
@@ -7,7 +7,7 @@ module.exports={
         extensions:['.js','.jsx','.ts','.tsx','.json'],
     },
     mode: NODE_ENV ? NODE_ENV : 'development',
-    entry: path.resolve(__dirname, 'src/index.js'),
+    entry: path.resolve(__dirname, 'src/index.ts'),
     output:{
         path: path.resolve(__dirname,'dist'),
         filename: 'main.js',
@@ -17,19 +17,34 @@ module.exports={
         rules:[
             {
                 test:/\.[tj]sx?$/,
+                exclude: /node_modules/,
                 use:['ts-loader'],
             },
             {
-                test:/\.(s*)css$/,
+                test:/\.(png|jpg|gif)$/i,
+                use:[{
+                    loader:'url-loader',
+                    options:{
+                        limit:8192,
+                    },
+                },],
+            },
+            {
+                test:/\.css$/,
+                use:['style-loader','css-loader'],
+            },
+            {
+                test:/\.scss$/,
                 use:[
                     'style-loader',
+                    'css-modules-typescript-loader?modules',
                     {
                         loader:'css-loader',
                         options:{
                             modules:{
                                 mode:'local',
                                 localIdentName:'[name]__[local]__[hash:base64:5]',
-                                auto: /\.modules\.\w+$/i,
+                                auto: /\.module\.\w+$/i,
                             }
                         }
                     },
@@ -50,4 +65,4 @@ module.exports={
     },
     devtool:'source-map'
 
-}
+};
