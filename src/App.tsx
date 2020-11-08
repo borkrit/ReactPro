@@ -12,9 +12,9 @@ const App = ()=>{
             <Header />
             <div  className={cn('content')}>
             <div className={cn('color')}>
-               <h1>Find all your favorite Pokemon</h1>
+               <h1>Find all your favorite  Pokemon</h1>
                 <p>You can know the type of Pokemon, its strengths, disadvantages and abilities</p>
-                <button type='submit'>See pokemons</button>
+                <button type='submit'>See pokemons </button>
             </div>
                 <div className={cn('banner')}>
                     <p>banner</p>

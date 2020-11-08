@@ -9,7 +9,7 @@ const Header = () => {
     return (
         <div className={style.header} >
             <div className={s.container} >
-                <img src='{logo}' alt="logo" />
+                <img src='{logo}' alt="logotop" />
                 <nav className={style.topMenu}>
                     <a href="#">home</a>
                     <a href="#">pokedex</a>
