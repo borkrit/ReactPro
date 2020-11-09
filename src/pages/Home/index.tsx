@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '../../components/Button';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
+import Heading from '../../components/Heading';
 import Layout from '../../components/Layout';
 import Parallax from '../../components/Parallax';
 
@@ -14,17 +15,15 @@ const HomePage = () => {
             <Layout 
             
             >
-                <div 
-                  
-                >
-                    <h1>
+                <div>
+                    <Heading element={'h1'}> 
                         <b>Find</b> all your favorite <b>Pokemon</b>
-                    </h1>
+                    </Heading>
                     <p>
                     You can know the type of Pokemon, its strengths, disadvantages and abilities 
                     </p>
 
-                    <Button onClick={()=>console.log('work')} >
+                    <Button  onClick={()=>console.log('work')} >
                         See pokemons
                     </Button>
                 </div>
