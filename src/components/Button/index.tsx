@@ -12,7 +12,7 @@ interface ButtonProps {
     
 }
 
-const Button: React.FC<ButtonProps> = ({ children, onClick, background=null, fontSize=null,width=null,height=null,color=null}) => {
+const Button: React.FC<ButtonProps> = ({ children, onClick, background, fontSize,width,height,color}) => {
     return (
         <button
             type='button'

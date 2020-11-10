@@ -2,7 +2,7 @@ import React from 'react';
 
 
 interface IHeading {
-    element:string  
+    element:string 
 }
 
 const Heading: React.FC<IHeading> = ({ children,element}) => {
