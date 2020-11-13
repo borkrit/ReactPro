@@ -3,9 +3,12 @@ import PokemonCard from '../../components/PokemonCard';
 
 import s from './pokedex.module.scss'
 
+interface IData {
+  pokemons:[]
+}
 
 const usePokemons = () =>{
-  const [data, setPokemons] = useState([]);
+  const [data, setPokemons] = useState<IData>({pokemons:[]});
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
    
