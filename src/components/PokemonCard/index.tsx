@@ -13,7 +13,7 @@ interface IPokemon{
 
 const PokemonCard: React.FC<IPokemon> = ({name_clean, attack, defense, img, types}) => {
     return (
-        <div className={s.root}>
+        <div className={s.root} key={name_clean}>
             <div className={s.infoWrap}>
                
                 <Heading element={'p'}  >
@@ -35,7 +35,7 @@ const PokemonCard: React.FC<IPokemon> = ({name_clean, attack, defense, img, type
                 </div>
                 {
                     types?.map((name)=>(
-                        <div className={s.labelWrap}>
+                        <div className={s.labelWrap} key={name}>
                             <span className={s.label}>{name}</span>
                         </div>
                     ))

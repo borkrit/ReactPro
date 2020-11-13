@@ -1,17 +1,17 @@
+import { navigate } from 'hookrouter';
 import React from 'react';
 import Button from '../../components/Button';
-import Footer from '../../components/Footer';
-import Header from '../../components/Header';
 import Heading from '../../components/Heading';
 import Layout from '../../components/Layout';
 import Parallax from '../../components/Parallax';
+import { LinkEnum } from '../../routes';
 
 import s from './home.module.scss';
 
 const HomePage = () => {
     return (
         <div className={s.root}>
-            <Header/>
+            
             <Layout 
             
             >
@@ -23,7 +23,7 @@ const HomePage = () => {
                     You can know the type of Pokemon, its strengths, disadvantages and abilities 
                     </p>
 
-                    <Button  onClick={()=>console.log('work')} >
+                    <Button  onClick={()=>navigate(LinkEnum.POKEDEX)} >
                         See pokemons
                     </Button>
                 </div>
@@ -33,10 +33,7 @@ const HomePage = () => {
                     <Parallax />
 
                 </div>
-            </Layout>
-            <Footer />
-            
-            
+            </Layout>            
         </div>
         
     );

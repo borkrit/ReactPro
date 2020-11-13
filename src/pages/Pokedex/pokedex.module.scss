@@ -1,5 +1,6 @@
 .pokemonsTable{
     display: flex;
     flex-wrap: wrap;
+   flex-basis: auto ;
     justify-content: space-between;
 }
