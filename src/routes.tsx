@@ -4,29 +4,37 @@ import Pokedex from './pages/Pokedex';
 
 interface IHeaderMenu{
     title: string
-    link: string
+    link: LinkEnum
     component: ()=>JSX.Element
+}
+
+export enum LinkEnum {
+    HOME = '/',
+    POKEDEX = '/pokedex',
+    LEGENDARIES='/legendaries',
+    DOCUMENTATION='/documentation'
+
 }
 
 export const HEADER_MENU: IHeaderMenu[]  =[
     { 
         title:'Home',
-        link:'/',
+        link:LinkEnum.HOME,
         component: ()=> <HomePage/>
     },
     {
         title:'pokedex',
-        link:'/pokedex',
+        link:LinkEnum.POKEDEX,
         component: ()=> <Pokedex/>
     },
     {
         title:'legendaries',
-        link:'/legendaries',
+        link:LinkEnum.LEGENDARIES,
         component: ()=> <HomePage/>
     },
     {
         title:'documentation',
-        link:'/documentation',
+        link:LinkEnum.DOCUMENTATION,
         component: ()=> <HomePage/>
     },
 ];

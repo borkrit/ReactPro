@@ -7,13 +7,6 @@ import { A, usePath } from 'hookrouter';
 import { HEADER_MENU } from '../../routes';
 import cn from 'classnames'
 
-interface IMenu{
-    id:number
-    value:string
-    link:string
-}
-
-
 const Header = () => {
     const path = usePath();
     return (
@@ -31,17 +24,11 @@ const Header = () => {
 
                         ))
                     }
-                    
-                    
-                </div>
-               
-                
-                    
-                
+                </div>  
             </div>
         </div>
 
     )
 }
 
-export default Header;
+export default React.memo(Header);
