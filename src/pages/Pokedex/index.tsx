@@ -1,55 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import { setQueryParams } from 'hookrouter';
+import React, { useEffect, useMemo, useState } from 'react';
 import PokemonCard from '../../components/PokemonCard';
-
+import config from '../../config'
+import useData from '../../hook/getData';
+import req from '../../utils/request';
 import s from './pokedex.module.scss'
 
-interface IData {
-  pokemons:[]
-}
-
-const usePokemons = () =>{
-  const [data, setPokemons] = useState<IData>({pokemons:[]});
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-   
-  useEffect(()=>{
-
-    const getPokemons = async ()=>{
-
-      setIsLoading(true)
-      try{
-        const respons = await fetch ('http://zar.hosthot.ru/api/v1/pokemons?limit=20');
-        const result = await respons.json();
-  
-        setPokemons(result);
-      } catch(e){
-        setIsError(true);
-      } finally{
-        setIsLoading(false)
-      }
-      
-    }
-
-    getPokemons();
-  },[]);
-
-  return {
-    data,
-    isError,
-    isLoading
-
-  }
-
-  
-    
-}
 
 const Pokedex = () => {
+  const [searchValue,setSearchValue]= useState(''); 
+  const [query, setQuery]= useState({});
+
+
   const {  
     data,
     isError,
     isLoading
-  } = usePokemons();
+  } = useData('getPokemons', query, [searchValue]);
+
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
+    setSearchValue(e.target.value)
+    setQuery((s)=>({
+      ...s,
+      name: e.target.value,
+    }));
+  }
 
   if(isLoading){
     return <div>Loading</div>
@@ -59,7 +34,9 @@ const Pokedex = () => {
   }
   return (
         <div>
-            
+            <div>
+              <input type="text" value={searchValue} onChange={handleOnChange}/>
+            </div>
             <div className={s.pokemonsTable}>
                 {
                     data.pokemons.map(({name_clean, img, stats,types } ) => (
