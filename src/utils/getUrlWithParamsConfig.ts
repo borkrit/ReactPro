@@ -1,17 +1,28 @@
 import config from '../config'
 import useData from '../hook/getData';
 
-function getUrlWithParamsConfig (endpointConfig: string, query: object){
+function getUrlWithParamsConfig (endpointConfig: string, query: any){
 
     let url ={
         ...config.client.server,
-        ...config.client.endpoint[endpointConfig].uri,
+        ...config.client.endpoint[endpointConfig as keyof typeof config.client.endpoint].uri,
 
-        query:{
-            ...query
-        }
+        query:{}
     }
     
+    const pathname = Object.keys(query).reduce((acc, val)=>{
+        if(acc.indexOf(`{${val}}`) !== -1){
+            const result =acc.replace(`{${val}}`,query[val]);
+            delete query[val];
+            return result;
+        }
+        return acc;
+    }, url.pathname)
+
+    url.pathname =pathname;
+    url.query ={
+        ...query,
+    }
     return url;
 }
 
