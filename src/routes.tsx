@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import HomePage from './pages/Home';
 import Pokedex from './pages/Pokedex';
+import Pokemon, { IPokemonProps } from './pages/Pokemon';
 
 interface IHeaderMenu{
     title: string
     link: LinkEnum
-    component: ()=>JSX.Element
+    component: (props: PropsWithChildren<any>)=>JSX.Element
 }
 
 export enum LinkEnum {
     HOME = '/',
     POKEDEX = '/pokedex',
     LEGENDARIES='/legendaries',
-    DOCUMENTATION='/documentation'
+    DOCUMENTATION='/documentation',
+    POKEMON='/pokedex/:id'
 
 }
 
@@ -39,11 +41,17 @@ export const HEADER_MENU: IHeaderMenu[]  =[
     },
 ];
 
+const SECOND_ROUTES: IHeaderMenu[] =[{
+    title: 'POKEMON',
+    link: LinkEnum.POKEMON,
+    component:({id}:IPokemonProps)=> <Pokemon id={id}/>
+}]
+
 interface IAcc {
-    [n:string]: ()=>JSX.Element
+    [n:string]: (props: PropsWithChildren<any>)=>JSX.Element
 }
 
-const routes = HEADER_MENU.reduce((acc:IAcc, item: IHeaderMenu)=>{
+const routes = [...HEADER_MENU, ...SECOND_ROUTES].reduce((acc:IAcc, item: IHeaderMenu)=>{
     acc[item.link] = item.component;
     return acc;
 }, {});
